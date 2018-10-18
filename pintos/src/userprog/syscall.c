@@ -108,8 +108,10 @@ void toRemove(struct intr_frame *f){
 	int *p = f->esp;
 	check_address(p+1);
 	check_address(*(p+1));
+	acquire_filesys_lock();
 	char *ff = (char*)*((int*)f->esp+1);
 	f->eax = filesys_remove(ff);
+	release_filesys_lock();
 }
 
 void toClose(struct intr_frame *f){

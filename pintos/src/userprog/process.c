@@ -52,8 +52,6 @@ process_execute (const char *file_name)
   strlcpy (fn_copy, file_name, PGSIZE);
   char *save_ptr;
 
-
-
   f_name = malloc(strlen(file_name)+1);
   strlcpy (f_name, file_name, strlen(file_name)+1);
   f_name = strtok_r (f_name," ",&save_ptr);

@@ -188,11 +188,11 @@ thread_create (const char *name, int priority,
   /* Initialize thread. */
   init_thread (t, name, priority);
   tid = t->tid = allocate_tid ();
-  struct child* c = malloc(sizeof(*c));
-  c->tid = tid;
-  c->exit_error = t->exit_error;
-  c->used = false;
-  list_push_back (&running_thread()->child_proc, &c->elem);
+  struct child* child = malloc(sizeof(*child));
+  child->tid = tid;
+  child->exit_error = t->exit_error;
+  child->used = false;
+  list_push_back (&running_thread()->child_proc, &child->elem);
 
   /* Prepare thread for first run by initializing its stack.
      Do this atomically so intermediate values for the 'stack' 
@@ -601,6 +601,7 @@ void release_filesys_lock()
 {
   lock_release(&filesys_lock);
 }
+
 
 /* Returns a tid to use for a new thread. */
 static tid_t

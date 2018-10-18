@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\threads",
+    "\\src\\userprog"
+  ],
+  "SelectedNode": "\\src\\threads\\thread.c",
+  "PreviewInSolutionExplorer": false
+}
