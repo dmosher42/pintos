@@ -7,6 +7,8 @@
 #include <kernel/list.h>
 #include <threads/synch.h>
 
+#include <threads/fixed_point.h>
+
 /* States in a thread's life cycle. */
 enum thread_status
   {
@@ -115,6 +117,8 @@ struct thread
 	int base_priority;
 	struct list locks;
 	struct lock *lock_waiting;
+	int nice;
+	fixed_t recent_cpu;
 
 
 
@@ -175,6 +179,10 @@ void thread_donate_priority (struct thread *t);
 void thread_hold_the_lock(struct lock *lock);
 void thread_donate_priority (struct thread *t);
 void thread_remove_lock (struct lock *lock);
+
+void thread_mlfqs_update_priority (struct thread *t);
+void thread_mlfqs_update_load_avg_and_recent_cpu (void);
+void thread_mlfqs_recent_cpu_plusplus (void);
 //=================================================
 
 
