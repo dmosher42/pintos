@@ -1,6 +1,5 @@
 # pintos
 
-Note: if compiling src/utils/make gives an error, change 
-LDLIBS = -lm
-to
+Note: if compiling utils gives an error, change LDLIBS = -lm
+in src/utils/makefile to
 LDFLAGS = -lm
